@@ -1,20 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("#create-task-form");
-  const taskList = document.querySelector("#tasks");
+  // Select the form and tasks list
+  const form = document.getElementById("create-task-form");
+  const taskList = document.getElementById("tasks");
 
-  form.addEventListener("submit", (event) => {
+  // Add submit event listener to the form
+  form.addEventListener("submit", function(event) {
+    // Prevent the default form submission
     event.preventDefault();
 
-    const taskInput = document.querySelector("#new-task-description");
-    const taskDescription = taskInput.value;
+    // Get the input value
+    const taskDescription = document.getElementById("new-task-description").value;
 
-    if (taskDescription.trim() !== "") {
-      const newTask = document.createElement("li");
-      newTask.textContent = taskDescription;
-      taskList.appendChild(newTask);
+    // Create a new list item with the task description
+    const newTask = document.createElement("li");
+    newTask.textContent = taskDescription;
 
-      // Clear the input field
-      taskInput.value = "";
-    }
+    // Add the new task to the task list
+    taskList.appendChild(newTask);
+
+    // Clear the input field
+    document.getElementById("new-task-description").value = "";
   });
-})
+});
